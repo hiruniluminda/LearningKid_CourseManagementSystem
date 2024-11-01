@@ -1,0 +1,66 @@
+/* src/components/WhyUs.css */
+
+.why-us {
+    padding: 60px 0; /* Add padding to the section */
+    background-color: #ffffff; /* White background for the section */
+  }
+  
+  .why-us .container {
+    max-width: 1200px; /* Set a max width for the container */
+  }
+  
+  .why-us .section-heading {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 40px; /* Space below the heading */
+  }
+  
+  .why-us h2 {
+    font-size: 32px; /* Heading font size */
+    font-weight: bold; /* Bold font weight */
+    color: #333; /* Dark color for the heading */
+  }
+  
+  .why-us .row {
+    margin-bottom: 20px; /* Space between rows */
+  }
+  
+  /* Tabs styling (example, you can customize as needed) */
+  .tabs {
+    display: flex; /* Use flexbox for tab layout */
+    justify-content: center; /* Center tabs */
+    margin-bottom: 30px; /* Space below tabs */
+  }
+  
+  .tab {
+    padding: 15px 30px; /* Padding for tabs */
+    cursor: pointer; /* Cursor change on hover */
+    background-color: #f1f1f1; /* Light background color for tabs */
+    border-radius: 5px; /* Rounded corners */
+    margin: 0 10px; /* Space between tabs */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .tab:hover {
+    background-color: #e1e1e1; /* Darker background on hover */
+  }
+  
+  .tab.active {
+    background-color: #ff6600; /* Active tab background color */
+    color: #ffffff; /* Active tab text color */
+  }
+  
+  /* Content for tabs */
+  .tab-content {
+    display: none; /* Hide tab content by default */
+  }
+  
+  .tab-content.active {
+    display: block; /* Show active tab content */
+  }
+  
+  .tab-content p {
+    line-height: 1.6; /* Improve readability */
+    color: #666; /* Text color for content */
+    margin: 0; /* Remove margin */
+  }
+  

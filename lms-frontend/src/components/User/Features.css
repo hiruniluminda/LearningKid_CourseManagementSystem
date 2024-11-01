@@ -1,0 +1,92 @@
+/* src/components/Features.css */
+
+.features {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .features .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .features .features-post {
+    position: relative;
+    overflow: hidden;
+    margin: 15px 0;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .features .features-post:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .features .features-content {
+    position: relative;
+  }
+  
+  .features .content-show h4 {
+    font-size: 22px;
+    color: #333;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .features .content-show h4 i {
+    color: #ff6600;
+    font-size: 26px;
+  }
+  
+  .features .content-hide {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .features .features-post:hover .content-hide {
+    opacity: 1;
+    visibility: visible;
+    max-height: 200px;
+  }
+  
+  .features .content-hide p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.8;
+    margin: 10px 0;
+  }
+  
+  .features .content-hide .scroll-to-section a {
+    display: inline-block;
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .features .content-hide .scroll-to-section a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .features .features-post {
+      margin: 20px 0;
+    }
+  
+    .features .content-hide {
+      max-height: none;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  
