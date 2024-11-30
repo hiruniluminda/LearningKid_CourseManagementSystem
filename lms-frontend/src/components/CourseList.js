@@ -1,48 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import "./User/Features.css";
+import mainthumb1 from "../assets/images/c1.jpg"; // Update image paths as needed
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const CourseList = () => {
+const Features = () => {
   const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);  // To track loading state
-  const [error, setError] = useState(null);      // To track error state
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/courses")
-      .then(response => {
+    axios
+      .get("http://localhost:8080/api/courses")
+      .then((response) => {
+        console.log("Courses data:", response.data); // Debug
         setCourses(response.data);
-        setLoading(false);  // Set loading to false when data is loaded
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching courses", error);
-        setError("Failed to load courses. Please try again.");
-        setLoading(false);
       });
   }, []);
 
-  if (loading) {
-    return <p>Loading courses...</p>;  // Show loading message while fetching
-  }
-
-  if (error) {
-    return <p style={{ color: "red" }}>{error}</p>;  // Show error message if any
-  }
-
   return (
-    <div>
-      <h2>User Panel - Available Courses</h2>
-      {courses.length > 0 ? (
-        <ul>
-          {courses.map(course => (
-            <li key={course.id}>
-              <strong>{course.title}</strong>: {course.description}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No courses available.</p>
-      )}
+    <div className="features-container">
+      <h2 className="heading-with-lines">All Courses</h2>
+      <div className="courses-list">
+        {courses.length > 0 ? (
+          courses.map((course) => (
+            <div className="course-card" key={course.id}>
+              <img
+                src={course.image || mainthumb1} // Fallback to a default image
+                alt={course.title}
+                className="course-image"
+              />
+              <div className="course-price">{`$${course.price}`}</div>
+              <div className="course-rating">
+                <span>⭐️⭐️⭐️⭐️⭐️</span>
+                <span className="reviews-text">{course.review}</span>
+              </div>
+              <h3 className="course-title">{course.title}</h3>
+              <p className="course-description">{course.description}</p>
+              <p>
+                <span role="img" aria-label="students">
+                  👥
+                </span>{" "}
+                {course.student} Students
+              </p>
+              <p>
+                <span role="img" aria-label="lessons">
+                  📚
+                </span>{" "}
+                {course.lesson} Lessons
+              </p>
+              <p>
+                <span role="img" aria-label="duration">
+                  ⏱️
+                </span>{" "}
+                {course.duration}
+              </p>
+              <Link to={`/coursecontent/${course.id}`}>
+                <button className="learn-button">Learn</button>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p>No courses available.</p>
+        )}
+      </div>
     </div>
   );
 };
 
-export default CourseList;
+export default Features;

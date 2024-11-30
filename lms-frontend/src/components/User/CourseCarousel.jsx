@@ -24,6 +24,7 @@ const courses = [
     authorName: 'Author 2',
     isFree: true,
   },
+
 ];
 
 const CourseCarousel = () => {

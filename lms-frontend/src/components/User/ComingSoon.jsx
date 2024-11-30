@@ -7,7 +7,7 @@ const ComingSoon = () => {
     <section className="section coming-soon" data-section="section3">
       <div className="container">
         <div className="row">
-          <div className="col-md-7 col-xs-12">
+          {/* <div className="col-md-7 col-xs-12">
             <div className="continer centerIt">
               <div>
                 <h4>Take <em>Offer for online course</em> for your next class</h4>
@@ -19,7 +19,7 @@ const ComingSoon = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="col-md-5">
             <div className="right-content">
               <div className="top-content">

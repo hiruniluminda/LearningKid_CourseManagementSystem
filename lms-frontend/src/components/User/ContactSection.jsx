@@ -5,7 +5,7 @@ import './ContactSection.css'
 
 const ContactSection = () => {
   return (
-    <section className="section contact" data-section="section6">
+    <section className="section contact" data-section="section6" id='section6'>
       <div className="container">
         <div className="row">
           <div className="col-md-12">

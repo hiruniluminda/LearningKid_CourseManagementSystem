@@ -1,66 +1,96 @@
-/* src/components/WhyUs.css */
-
 .why-us {
-    padding: 60px 0; /* Add padding to the section */
-    background-color: #ffffff; /* White background for the section */
-  }
-  
-  .why-us .container {
-    max-width: 1200px; /* Set a max width for the container */
-  }
-  
-  .why-us .section-heading {
-    text-align: center; /* Center align the heading */
-    margin-bottom: 40px; /* Space below the heading */
-  }
-  
-  .why-us h2 {
-    font-size: 32px; /* Heading font size */
-    font-weight: bold; /* Bold font weight */
-    color: #333; /* Dark color for the heading */
-  }
-  
-  .why-us .row {
-    margin-bottom: 20px; /* Space between rows */
-  }
-  
-  /* Tabs styling (example, you can customize as needed) */
-  .tabs {
-    display: flex; /* Use flexbox for tab layout */
-    justify-content: center; /* Center tabs */
-    margin-bottom: 30px; /* Space below tabs */
-  }
-  
-  .tab {
-    padding: 15px 30px; /* Padding for tabs */
-    cursor: pointer; /* Cursor change on hover */
-    background-color: #f1f1f1; /* Light background color for tabs */
-    border-radius: 5px; /* Rounded corners */
-    margin: 0 10px; /* Space between tabs */
-    transition: background-color 0.3s; /* Smooth transition */
-  }
-  
-  .tab:hover {
-    background-color: #e1e1e1; /* Darker background on hover */
-  }
-  
-  .tab.active {
-    background-color: #ff6600; /* Active tab background color */
-    color: #ffffff; /* Active tab text color */
-  }
-  
-  /* Content for tabs */
-  .tab-content {
-    display: none; /* Hide tab content by default */
-  }
-  
-  .tab-content.active {
-    display: block; /* Show active tab content */
-  }
-  
-  .tab-content p {
-    line-height: 1.6; /* Improve readability */
-    color: #666; /* Text color for content */
-    margin: 0; /* Remove margin */
-  }
-  
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* light background */
+}
+
+.why-us .container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.why-us .row {
+  display: flex;
+  align-items: center;
+  gap: 50px; /* Space between image and text */
+}
+
+.main-image {
+  width: 600px;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-heading h2 {
+  font-size: 36px;
+  color: #162447;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.section-heading p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+  color: #0099cc;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Added gap between feature items */
+}
+
+.features-list li {
+  flex: 0 0 100%; /* two columns */
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.read-more-btn {
+  padding: 10px 20px;
+  background-color: #0099cc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.read-more-btn:hover {
+  background-color: #007799;
+}
+.heading-with-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  position: relative;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.heading-with-lines::before,
+.heading-with-lines::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px solid #17a2b8; /* Change color as needed */
+  margin: 0 15px; /* Adjust space between line and text */
+}
+
+.heading-with-lines::before {
+  margin-right: 15px;
+}
+
+.heading-with-lines::after {
+  margin-left: 15px;
+}
+

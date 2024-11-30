@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateCourse = () => {
-  const [course, setCourse] = useState({ title: "", description: "", teacher: { id: "" } });
+  const [course, setCourse] = useState({
+    title: "",
+    price: "",
+    review: "",
+    description: "",
+    lesson: "",
+    student: "",
+    duration: "",
+    image: "",
+  });
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate(); // Correct way to use navigation
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,14 +25,46 @@ const CreateCourse = () => {
     setSuccessMessage("");
     setErrorMessage("");
 
-    axios.post("http://localhost:8080/api/courses/create", course)
-    
+    // Basic form validation
+    if (!course.title || !course.price || !course.description) {
+      setErrorMessage("Title, price, and description are required.");
+      setLoading(false);
+      return;
+    }
+
+    if (isNaN(course.price) || course.price <= 0) {
+      setErrorMessage("Please enter a valid positive price.");
+      setLoading(false);
+      return;
+    }
+
+    // Sending data to the backend
+    axios
+      .post("http://localhost:8080/api/courses/create", course)
       .then((response) => {
         setSuccessMessage("Course created successfully");
-        setCourse({ title: "", description: "", teacher: { id: "" } });
-      })
+        setCourse({
+          title: "",
+          price: "",
+          review: "",
+          description: "",
+          lesson: "",
+          student: "",
+          duration: "",
+          image: "",
+        });
+        const createdCourseId = response.data.id; // Assuming backend returns the course ID
+
+        if (createdCourseId) {
+          setSuccessMessage("Course created successfully");
+          navigate(`/add-lesson/${createdCourseId}`);
+      } else {
+          setErrorMessage("Course creation failed. No ID returned.");
+      }      })
       .catch((error) => {
-        setErrorMessage("Error creating course: " + error.message);
+        setErrorMessage(
+          error.response ? error.response.data.message : "Error creating course"
+        );
       })
       .finally(() => {
         setLoading(false);
@@ -39,6 +83,24 @@ const CreateCourse = () => {
         />
       </div>
       <div>
+        <label>Price</label>
+        <input
+          type="number"
+          value={course.price}
+          onChange={(e) => setCourse({ ...course, price: e.target.value })}
+          disabled={loading}
+        />
+      </div>
+      <div>
+        <label>Review</label>
+        <input
+          type="text"
+          value={course.review}
+          onChange={(e) => setCourse({ ...course, review: e.target.value })}
+          disabled={loading}
+        />
+      </div>
+      <div>
         <label>Description</label>
         <textarea
           value={course.description}
@@ -49,11 +111,38 @@ const CreateCourse = () => {
         ></textarea>
       </div>
       <div>
-        <label>Teacher ID</label>
+        <label>Lessons</label>
         <input
           type="text"
-          value={course.teacher.id}
-          onChange={(e) => setCourse({ ...course, teacher: { id: e.target.value } })}
+          value={course.lesson}
+          onChange={(e) => setCourse({ ...course, lesson: e.target.value })}
+          disabled={loading}
+        />
+      </div>
+      <div>
+        <label>Students</label>
+        <input
+          type="text"
+          value={course.student}
+          onChange={(e) => setCourse({ ...course, student: e.target.value })}
+          disabled={loading}
+        />
+      </div>
+      <div>
+        <label>Duration</label>
+        <input
+          type="text"
+          value={course.duration}
+          onChange={(e) => setCourse({ ...course, duration: e.target.value })}
+          disabled={loading}
+        />
+      </div>
+      <div>
+        <label>Image Link</label>
+        <input
+          type="text"
+          value={course.image}
+          onChange={(e) => setCourse({ ...course, image: e.target.value })}
           disabled={loading}
         />
       </div>

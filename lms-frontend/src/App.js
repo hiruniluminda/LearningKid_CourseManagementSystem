@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import UserPanel from './components/UserPanel';
 import Dashboard from './components/Dashboard'
 import AdminPanel from './components/AdminPanel';
+import CourseList from './components/CourseList'
+import CourseContent from './components/User/CourseContent';
+import LessonForm from './components/LessonForm';
 
 const App = () => {
   const isAdmin = true; // Replace with your actual logic for checking admin status
@@ -21,6 +24,11 @@ const App = () => {
 
         <Route path="/create" element={<AdminPanel />} />
         <Route path="/course" element={<UserPanel />} />
+        <Route path="/courses" element={<CourseList />} />
+        <Route path="/coursecontent/:courseId" element={<CourseContent />} />
+        <Route path="/add-lesson/:courseId" element={<LessonForm />} />
+
+
 
       </Routes>
     </Router>

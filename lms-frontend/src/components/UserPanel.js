@@ -15,13 +15,14 @@ const UserPanel = () => {
     <div>
       <Header />
       <MainBanner />
+      <WhyUs />
       <CourseList />
       <Features />
-      <WhyUs />
+
       <ComingSoon />
       <CourseCard />
       <CourseCarousel />
-      <VideoSection />
+      {/* <VideoSection /> */}
       <ContactSection />
       <Footer />
     </div>
